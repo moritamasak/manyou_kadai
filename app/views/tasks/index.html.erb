@@ -4,13 +4,14 @@
   <tr>
     <th>タスク</th>
     <th>内容</th>
+    <th>作成時間</th>
   </tr>
 
 <% @tasks.each do |task| %>
-  <tr>
+  <tr class="index-contents">
     <td><%= task.name %></td>
     <td><%= task.content %></td>
-
+    <td><%= task.created_at%></td>
     <td><%= link_to '詳細', task_path(task.id)%></td>
     <td><%= link_to '編集', edit_task_path(task.id), data: {confirm: '本当にタスクを編集してよろしいですか？'} %></td>
     <td><%= link_to '削除', task_path(task.id), method: :delete, data: {confirm: '本当にタスクを削除してよろしいですか？'}%></td>
