@@ -5,6 +5,7 @@
 |Column |Type  |
 |name   |string|
 |content|string|
+|deadline|datetime|
 
 
 ## デプロイした手順

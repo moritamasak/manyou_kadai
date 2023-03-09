@@ -1,9 +1,37 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    if params[:sort_expired]
+      @tasks = Task.all.order(deadline: :desc)
+    else
+      @tasks = Task.all.order(created_at: :desc)
+    end
+
+    if params[:sort_priority]
+      @tasks = Task.all
+      @tasks = Task.all.order(priority: :asc)
+    end
+    
+    if params[:task].present?
+      if params[:task][:name].present? && params[:task][:status].present?
+        #両方name and statusが成り立つ検索結果を返す
+        @tasks = Task.where('name LIKE ?', "%#{params[:task][:name]}%")
+        @tasks = Task.where(status: params[:task][:status])
+        
+        #渡されたパラメータがtask nameのみだったとき
+      elsif params[:task][:name].present?
+        @tasks = Task.where('name LIKE ?', "%#{params[:task][:name]}%")
+      
+       #渡されたパラメータがステータスのみだったとき
+      elsif params[:task][:status].present?
+        @tasks = Task.where(status: params[:task][:status])
+      end
+    end
   end
+
   
+
   def new
     @task = Task.new
   end
@@ -50,6 +78,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   def task_params
-    params.require(:task).permit(:name, :content)
+    params.require(:task).permit(:name, :content, :deadline, :status, :priority)
   end
 end
