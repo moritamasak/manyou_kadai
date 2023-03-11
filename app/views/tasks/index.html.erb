@@ -6,7 +6,9 @@
     </li>
     <li>ステータス検索</li>
     <li><%= form.select :status, [["未着手", "0"], ["着手中", "1"], ["完了", "2"]], include_blank: "選択して下さい" %></li>  
-    <li><%= form.submit '検索', name: nil %></li>  
+    <li>
+      <button type="button" class="btn btn-lg btn-primary"><%= form.submit '検索', name: nil %></button>
+    </li>  
       <% end %> 
   </ul>
 </div>
