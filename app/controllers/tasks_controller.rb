@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
+
     if params[:sort_expired]
       @tasks = Task.all.order(deadline: :desc)
     else
@@ -28,6 +29,8 @@ class TasksController < ApplicationController
         @tasks = Task.where(status: params[:task][:status])
       end
     end
+
+    @tasks = Task.page(params[:page]).per(5)
   end
 
   

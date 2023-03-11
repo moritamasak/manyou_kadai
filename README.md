@@ -6,6 +6,9 @@
 |name   |string|
 |content|string|
 |deadline|datetime|
+|status|integer|
+|priority|integer|
+
 
 
 ## デプロイした手順
