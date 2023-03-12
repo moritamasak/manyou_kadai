@@ -30,7 +30,7 @@ class TasksController < ApplicationController
       end
     end
 
-    @tasks = Task.page(params[:page]).per(5)
+    # @tasks = Task.page(params[:page]).per(20)
   end
 
   
