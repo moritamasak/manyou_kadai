@@ -12,7 +12,7 @@ FactoryBot.define do
     name {'test_name2'}
     content {'test_content2'}
     deadline {'2023-03-12'}
-    status {'着手中'}
+    status {'未着手'}
     priority {'中'}
   end
   

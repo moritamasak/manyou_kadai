@@ -1,13 +1,13 @@
 <h1>タスク管理一覧</h1>
 <p><%= notice %></p>
 <div class = "container-fluid">
-    <li>タスク検索<%= form_with(model: Task.new, method: :get, local: true) do |form| %>
+    <li>タスク検索<%= form_with(model: Task.new, method: :get, local: true, url:tasks_path) do |form| %>
       <%= form.text_field :name %>
     </li>
     <li>ステータス検索</li>
     <li><%= form.select :status, [["未着手", "0"], ["着手中", "1"], ["完了", "2"]], include_blank: "選択して下さい" %></li>  
     <li>
-      <button type="button" class="btn btn-dark"><%= form.submit '検索', name: nil %>
+      <button type="button" class="btn btn-dark"><%= form.submit '検索',name: nil %>
     </li>  
       <% end %> 
     </li>
@@ -40,3 +40,4 @@
 <td><%= link_to '終了期限で並び替える',tasks_path(sort_expired: "true")%></td><br>
 <td><%= link_to '優先度で並び替える',tasks_path(sort_priority: "true")%></td><br>
 <%= link_to '新規タスク作成', new_task_path %>
+<%= paginate @tasks %>

@@ -10,27 +10,29 @@ class TasksController < ApplicationController
     end
 
     if params[:sort_priority]
-      @tasks = Task.all
-      @tasks = Task.all.order(priority: :asc)
+      # @tasks = Task.all
+      @tasks = @tasks.order(priority: :asc)
     end
-    
+
     if params[:task].present?
-      if params[:task][:name].present? && params[:task][:status].present?
-        #両方name and statusが成り立つ検索結果を返す
-        @tasks = Task.where('name LIKE ?', "%#{params[:task][:name]}%")
-        @tasks = Task.where(status: params[:task][:status])
+      # if params[:task][:name].present? && params[:task][:status].present?
+      #   #name and statusが成り立つ検索結果を返す
+      #   @tasks = Task.name_search(params)
+      #   @tasks = Task.status_search(params)
         
-        #渡されたパラメータがtask nameのみだったとき
-      elsif params[:task][:name].present?
-        @tasks = Task.where('name LIKE ?', "%#{params[:task][:name]}%")
+        #パラメータがtask nameのみだったとき
+        
+      if params[:task][:name].present?
+        @tasks = @tasks.name_search(params[:task][:name])
+      end
       
-       #渡されたパラメータがステータスのみだったとき
-      elsif params[:task][:status].present?
-        @tasks = Task.where(status: params[:task][:status])
+        #パラメータがステータスのみだったとき
+      if params[:task][:status].present?
+        @tasks = @tasks.status_search(params[:task][:status])
       end
     end
 
-    # @tasks = Task.page(params[:page]).per(20)
+    @tasks = @tasks.page(params[:page])
   end
 
   
