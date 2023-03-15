@@ -10,11 +10,10 @@
 #   email = Faker::Internet.email
 #   password = "password"
   User.create!(name: name,
-               email: email,
-               password: password,
-               deadline: 2023-03-12,
-               created_at: 2023-03-09,
-               status: 未着手,
-               priority: 高
+               email: 'email',
+               password: 'password',
+               deadline: '2023-03-12',
+               status: '未着手',
+               priority: '高'
                )
 end
