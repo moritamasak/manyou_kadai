@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# 10.times do |n|
+#   name = Faker::Games::Pokemon.name
+#   email = Faker::Internet.email
+#   password = "password"
+  User.create!(name: name,
+               email: email,
+               password: password,
+               deadline: 2023-03-12,
+               created_at: 2023-03-09,
+               status: 未着手,
+               priority: 高
+               )
+end

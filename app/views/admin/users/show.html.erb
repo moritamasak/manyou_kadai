@@ -1,0 +1,29 @@
+<h1><%= @user.name %>の投稿タスク</h1>
+<body>
+<table class="table">
+
+<head>
+<th>タスク名</th>
+<th>タスク詳細</th>
+<th>投稿日</th>
+<th>終了期限</th>
+<th>優先度</th>
+<th>ステータス</th>
+</head>
+
+<% @user.tasks.each do |task| %>
+<tr class="task_row" >
+<td><%= task.name %></td>
+<td><%= task.content %></td>
+<td><%= task.created_at.strftime("%Y-%m-%d %H:%M")  %></td>
+<td><%= task.deadline.strftime("%Y-%m-%d")  %></td>
+<td><%= task.status  %></td>
+<td><%= task.priority %></td>
+</tr>
+<% end %>
+
+</table>
+</body>
+<%= link_to 'ユーザー 一覧', admin_users_path %>
+<br>
+<%= link_to 'タスク 一覧', tasks_path %>

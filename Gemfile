@@ -16,6 +16,7 @@ gem 'net-imap'
 gem 'net-pop'
 gem 'kaminari'
 gem 'bootstrap'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
