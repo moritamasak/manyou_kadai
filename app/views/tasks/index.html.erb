@@ -15,6 +15,7 @@
 
 <table>
   <tr>
+    <th>ユーザー名</th>
     <th>タスク</th>
     <th>内容</th>
     <th>終了期限</th>
@@ -25,6 +26,7 @@
 
 <% @tasks.each do |task| %>
   <tr class="index-contents">
+    <td><%= task.user.name %></td>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
     <td><%= task.deadline %></td>
@@ -39,5 +41,8 @@
 </table>
 <td><%= link_to '終了期限で並び替える',tasks_path(sort_expired: "true")%></td><br>
 <td><%= link_to '優先度で並び替える',tasks_path(sort_priority: "true")%></td><br>
-<%= link_to '新規タスク作成', new_task_path %>
+<%= link_to '新規タスク作成', new_task_path %><br>
+<%= link_to '管理者画面へ',admin_users_path %>
 <%= paginate @tasks %>
+
+
