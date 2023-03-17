@@ -34,6 +34,10 @@ class TasksController < ApplicationController
       if params[:task][:status].present?
         @tasks = @tasks.status_search(params[:task][:status])
       end
+
+      if params[:task][:label_ids].present?
+        @tasks = @tasks.label_search(params[:task][:label_ids])
+      end
     end
 
     @tasks = @tasks.page(params[:page])
@@ -43,6 +47,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.labelings.build
   end
 
   def create
@@ -66,6 +71,8 @@ class TasksController < ApplicationController
   end
 
   def show
+    labels = Labeling.where(task_id: @task.id).pluck(:label_id)
+    @labels = Label.find(labels)
   end
 
   def edit
@@ -89,6 +96,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   def task_params
-    params.require(:task).permit(:name, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:name, :content, :deadline, :status, :priority,{label_ids: []})
   end
 end
