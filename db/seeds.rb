@@ -31,9 +31,3 @@ end
   Label.create!(label_name: "sample#{i + 1}")
 end
 
-10.times do |n|
-  Labelings.create!(
-    task_id: n + 1,
-    lebel_id: n + 1
-  )
-end
