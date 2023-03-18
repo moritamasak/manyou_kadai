@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }
   before_destroy :admin_user_null
-
   def admin_user_null
     throw :abort if self.admin? && User.where(admin: true).count == 1
   end

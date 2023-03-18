@@ -5,12 +5,17 @@
       <%= form.text_field :name %>
     </li>
     <li>ステータス検索</li>
-    <li><%= form.select :status, [["未着手", "0"], ["着手中", "1"], ["完了", "2"]], include_blank: "選択して下さい" %></li>  
     <li>
-      <button type="button" class="btn btn-dark"><%= form.submit '検索',name: nil %>
-    </li>  
-      <% end %> 
+      <%= form.select :status, [["未着手", "0"], ["着手中", "1"], ["完了", "2"]], include_blank: "選択して下さい" %>
     </li>
+    <li>ラベルの検索</li>  
+    <li>
+      <%= form.select("label_ids", Label.pluck(:label_name, :id), { include_blank: true })%>
+    </li>
+    <li>
+    <button type="button" class="btn btn-dark"><%= form.submit '検索',name: nil %>
+    </li>  
+    <% end %> 
 </div>
 
 <table>

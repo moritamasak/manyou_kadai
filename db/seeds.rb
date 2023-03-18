@@ -1,25 +1,33 @@
-0.upto(9) do |idx|
-  User.create(
-    name: names[idx],
-    email: "#{names[idx]}@example.com",
-    password: 'password',
-    admin: true
+User.create!(
+  name: 'takashi07',
+  email: 'takashi07@sample.ne',
+  password: "takashi07",
+  password_confirmation: "takashi07",
+  admin: true
+)
+
+10.times do |n|
+  User.create!(
+    name: "テスト#{n + 1}",
+    email: "test#{n + 1}@test.com",
+    password: "testtest#{n + 1}",
+    password_confirmation: "testtest#{n + 1}",
+    admin: false
   )
 end
 
-0.upto(9) do |idx|
-  Task.create(
-    title: "test#{idx + 1}",
-    content: "test#{idx +1}_content",
-    deadline: "2023/03/25",
-    status: '未着手',
-    priority: '中',
-    user_id: "1"
+10.times do |n|
+  Task.create!(
+    name: "title#{n + 1}",
+    content: "content#{n + 1}",
+    deadline: "2023-03-18",
+    status: "未着手",
+    priority: "高",
+    user_id: n + 1
   )
 end
 
-0.upto(9) do |idx|
-  Label.create(
-    labelname: "test#{idx + 1}"
-  )
-end 
+5.times do |i|
+  Label.create!(label_name: "sample#{i + 1}")
+end
+

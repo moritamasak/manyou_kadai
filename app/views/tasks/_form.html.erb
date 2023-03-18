@@ -35,7 +35,10 @@
     <%= form.select :priority, Task.priorities.keys.to_a, include_blank: "選択してください" %>
   </div>
 
+  <div class="task_label">
+    <%= form.label :"ラベル"%>
+      <%= form.collection_check_boxes(:label_ids, Label.all, :id, :label_name) %>
+  </div>
   <%= form.submit %>
 <% end %>
-
 <%= link_to 'タスク一覧画面へ', tasks_path %>
