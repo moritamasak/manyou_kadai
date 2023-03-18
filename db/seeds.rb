@@ -1,8 +1,8 @@
 User.create!(
-  name: 'masaki',
-  email: 'masaki@sample.ne',
-  password: "masaki7",
-  password_confirmation: "masaki7",
+  name: 'takashi',
+  email: 'takashi@sample.ne',
+  password: "takashi7",
+  password_confirmation: "takashi7",
   admin: true
 )
 
