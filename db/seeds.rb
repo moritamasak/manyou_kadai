@@ -1,6 +1,6 @@
 User.create!(
-  name: 'takashi',
-  email: 'takashi@sample.ne',
+  name: 'takashi7',
+  email: 'takashi7@sample.ne',
   password: "takashi7",
   password_confirmation: "takashi7",
   admin: true
@@ -23,7 +23,7 @@ end
     deadline: "2023-03-18",
     status: "未着手",
     priority: "高",
-    user_id: n + 1
+    user_id: {n + 1}
   )
 end
 
@@ -33,7 +33,7 @@ end
 
 10.times do |n|
   Labelings.create!(
-    task_id: n + 1,
-    tag_id: n + 1
+    task_id: {n + 1},
+    lebel_id: {n + 1}
   )
 end
