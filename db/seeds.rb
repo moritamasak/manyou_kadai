@@ -32,7 +32,7 @@ end
 end
 
 10.times do |n|
-  Tagging.create!(
+  Labelings.create!(
     task_id: n + 1,
     tag_id: n + 1
   )
